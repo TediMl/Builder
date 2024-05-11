@@ -10,19 +10,22 @@ namespace Builder
     //These steps are so generic that these steps will produce different products.
     public class ReportDirectory
     {
-       
-            public Report ExecuteReport(ReportBuilder reportObject)
-            {
-                reportObject.CreateNewReport();
-                reportObject.SetReportType();
-                reportObject.SetReportHeader();
-                reportObject.SetReportFooter();
-                reportObject.SetReportContent();
 
-                return reportObject.GetReport();
 
-            }
+        public ReportBuilder ExecuteReport(ReportBuilder reportObject)
+        {
+            reportObject.CreateNewReport()
+                        .SetReportType()
+                        .SetReportHeader()
+                        .SetReportFooter()
+                        .SetReportContent();
+
+            return reportObject;
         }
+
+
     }
+}
+    
 
 

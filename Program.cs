@@ -3,19 +3,23 @@ using Builder;
 
 class Program
 {
-    static void Main(string[] args)
-    {
-        PdfReport pdf=new PdfReport();
-        ReportDirectory director = new ReportDirectory();
-        Report report =director.ExecuteReport(pdf);
-        report.DisplayReport();
+    
+        static void Main(string[] args)
+        {
+            ReportDirectory director = new ReportDirectory();
 
-        Console.WriteLine("**********");
-        // Constructing the Excel Report
-        // The Process is going to be the same
-        ExcelReport excelReport = new ExcelReport();
-        report =director.ExecuteReport(excelReport);
-        report.DisplayReport();
-        Console.ReadKey();
+            
+            Report pdfReport = director.ExecuteReport(new PdfReport()).GetReport();
+            pdfReport.DisplayReport();
+
+            Console.WriteLine("**********");
+
+            
+            Report excelReport = director.ExecuteReport(new ExcelReport()).GetReport();
+            excelReport.DisplayReport();
+
+            Console.ReadKey();
+        }
     }
-}
+
+

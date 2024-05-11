@@ -10,19 +10,22 @@ namespace Builder
     {
         protected Report reportObject;
 
-        public abstract void SetReportType();
-        public abstract void SetReportHeader();
-        public abstract void SetReportFooter();
-        public abstract void SetReportContent();
+        public abstract ReportBuilder SetReportType();
+        public abstract ReportBuilder SetReportHeader();
+        public abstract ReportBuilder SetReportFooter();
+        public abstract ReportBuilder SetReportContent();
 
         public Report GetReport()
         {
             return reportObject;
         }
-        public void CreateNewReport()
+
+        public ReportBuilder CreateNewReport()
         {
             reportObject = new Report();
+            return this;
         }
+
 
     }
 }

@@ -6,33 +6,36 @@ using System.Threading.Tasks;
 
 namespace Builder
 {
-    
-        
-    
-        // The Following Concrete Builder Implementd the ReportBuilder Abstract Class and 
-        // provide specific implementations of the steps for Creating PDFReport. 
-        public class PdfReport : ReportBuilder
+
+
+
+    // By returning this, each method allows the next method in the chain to be called on the same ReportBuilder object.  
+    public class PdfReport : ReportBuilder
         {
-            public override void SetReportType()
-            {
-                reportObject.ReportType = "PDF";
-            }
-
-            public override void SetReportHeader()
-            {
-                reportObject.ReportHeader = "PDF Header";
-            }
-
-            public override void SetReportFooter()
-            {
-                reportObject.ReportFooter = "PDF Footer";
-            }
-
-            public override void SetReportContent()
-            {
-                reportObject.ReportContent = "PDF content section";
-            }
+        public override ReportBuilder SetReportType()
+        {
+            reportObject.ReportType = "PDF";
+            return this;
         }
+
+        public override ReportBuilder SetReportHeader()
+        {
+            reportObject.ReportHeader = "PDF Header";
+            return this;
+        }
+
+        public override ReportBuilder SetReportFooter()
+        {
+            reportObject.ReportFooter = "PDF Footer";
+            return this;
+        }
+
+        public override ReportBuilder SetReportContent()
+        {
+            reportObject.ReportContent = "PDF content section";
+            return this;
+        }
+    }
     }
 
 
